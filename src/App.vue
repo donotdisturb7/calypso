@@ -16,6 +16,12 @@ import Footer from '@/components/Footer.vue'
 </script>
 
 <style>
-
+/* Dans le style global */
+.hover-scale path {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover path {
+  transform: scale(1.1);
+}
 </style>
 
