@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-[#FFF5E9] relative">
+  <div class="min-h-screen flex flex-col bg-[#FFF9F9] ">
     <div class="max-w-[1920px] mx-auto w-full px-4 md:px-8 lg:px-16 flex-1">
       <NavBar />
-      <main class="flex-1 min-h-[800px] relative z-10">
+      <main class="flex-1 min-h-[800px]  z-10">
         <RouterView />
       </main>
     </div>

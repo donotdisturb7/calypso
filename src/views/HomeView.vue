@@ -1,6 +1,6 @@
 <template>
   <Hero />
-  <CollectionList :showTitle="true" />
+  <CollectionList />
   <Gallery />
 </template>
 
