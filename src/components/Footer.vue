@@ -1,7 +1,7 @@
 <template>
   <footer class="relative bg-[#664532] pt-24 pb-12 mt-24">
     <!-- Section logo + SVG -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4">
+    <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4">
       <img 
         class="w-[126px] h-[126px] rounded-full object-cover" 
         src="@/assets/logo.png" 

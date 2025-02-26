@@ -37,6 +37,14 @@ export function useCollections() {
         soldOut: false,
         year: 2024,
         month: 1
+    }, {
+        id: 4,
+        image: '/src/assets/gallery/1.jpg',
+        title: 'VETEMENT 4',
+        price: 40,
+        soldOut: false,
+        year: 2024,
+        month: 1
     }, ]
 
     const filteredCollections = computed(() => {
