@@ -1,5 +1,5 @@
 <template>
-  <nav class="container mx-auto px-4 md:px-24 py-3 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center relative z-50">
+  <nav class="container  mx-auto px-4 md:px-24 py-3 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center relative z-50">
     <!-- Logo -->
     <RouterLink 
       to="/" 

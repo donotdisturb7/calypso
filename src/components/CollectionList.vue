@@ -1,7 +1,7 @@
 <template>
   <div class="my-20 flex flex-col min-h-[800px]">
   
-    <h2 v-if="showTitle" class="text-2xl mb-12">NOS COLLECTIONS.</h2>
+    <h2 v-if="!isFullPage" class="text-2xl mb-12">NOS COLLECTIONS.</h2>
 
     <div class="flex justify-between items-center mb-8">
       <div class="flex gap-4">
@@ -10,7 +10,7 @@
           :key="year"
           @click="selectedYear = year"
           :class="[
-            'text-xl font-light hover:bg-[#FDB0E6] hover:text-black rounded-md transform transition-transform hover:scale-105',
+            'text-xl font-light cursor-pointer hover:bg-[#FDB0E6] hover:text-black rounded-md transform transition-transform hover:scale-105',
             selectedYear === year ? 'text-black' : 'text-gray-400'
           ]"
         >
@@ -25,7 +25,7 @@
         :key="index"
         @click="selectedMonth = index"
         :class="[
-          'text-xl whitespace-nowrap hover:bg-[#FDB0E6] hover:text-black rounded-md transform transition-transform hover:scale-105',
+          'text-xl whitespace-nowrap cursor-pointer  hover:bg-[#FDB0E6] hover:text-black rounded-md transform transition-transform hover:scale-105',
           selectedMonth === index ? 'text-black' : 'text-gray-400'
         ]"
       >
@@ -51,12 +51,11 @@ import CollectionItem from '@/components/CollectionItem.vue'
 import { useCollections } from '@/composables/useCollections'
 
 defineProps({
-  showTitle: {
+  isFullPage: {
     type: Boolean,
     default: false
   }
 })
-
 
 const { selectedYear, selectedMonth, years, months, filteredCollections } = useCollections()
 </script>
