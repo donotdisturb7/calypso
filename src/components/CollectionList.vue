@@ -10,7 +10,7 @@
           :key="year"
           @click="selectedYear = year"
           :class="[
-            'text-xl font-light',
+            'text-xl font-light hover:bg-[#FDB0E6] hover:text-black rounded-md transform transition-transform hover:scale-105',
             selectedYear === year ? 'text-black' : 'text-gray-400'
           ]"
         >
@@ -25,7 +25,7 @@
         :key="index"
         @click="selectedMonth = index"
         :class="[
-          'text-xl whitespace-nowrap',
+          'text-xl whitespace-nowrap hover:bg-[#FDB0E6] hover:text-black rounded-md transform transition-transform hover:scale-105',
           selectedMonth === index ? 'text-black' : 'text-gray-400'
         ]"
       >
