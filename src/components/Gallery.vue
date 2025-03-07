@@ -1,6 +1,6 @@
 <template>
   <div class="my-20">
-    <h2 v-if="!isFullPage" class="text-2xl mb-12">GALLERY.</h2>
+    <h2 v-if="!isFullPage" class="text-2xl mb-12">GALERIE.</h2>
     
     <!-- Grille responsive avec variations d'aspect ratio -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

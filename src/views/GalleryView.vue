@@ -1,6 +1,6 @@
 <template>
   <div class="py-12">
-    <h1 class="text-4xl mb-12">GALLERY.</h1>
+    <h1 class="text-4xl mb-12">GALERIE.</h1>
     <Gallery :isFullPage="true" />
   </div>
 </template>

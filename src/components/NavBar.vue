@@ -43,13 +43,13 @@
         to="/decoration"
         class="text-center py-2 md:py-0 text-lg md:text-xl text-black uppercase tracking-wider font-inter hover:text-gray-600"
       >
-        Decoration
+        DÉcoration
       </RouterLink>
       <RouterLink
         to="/gallery"
         class="text-center py-2 md:py-0 text-lg md:text-xl text-black uppercase tracking-wider font-inter hover:text-gray-600"
       >
-        Gallery
+        Galerie
       </RouterLink>
     </div>
   </nav>
