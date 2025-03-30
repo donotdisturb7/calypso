@@ -1,95 +1,108 @@
-import { ref, computed, watch } from 'vue';
-import { useDecoration } from './useDecoration';
+import { useCartStore } from '../stores/cartStore';
+import { ref, computed } from 'vue';
 
-// Récupération des produits de décoration
-const { decorationItems } = useDecoration();
-
-// Récupération du panier depuis le localStorage au démarrage
-const savedCart = localStorage.getItem('cart');
-const initialCart = savedCart ? JSON.parse(savedCart) : [];
-
-// Utilisation d'une référence partagée pour le panier
-const cartItems = ref(initialCart);
-
-// Sauvegarde du panier dans localStorage chaque fois qu'il change
-watch(
-  cartItems,
-  (newCart) => {
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    console.log('Panier sauvegardé dans localStorage:', newCart);
-  },
-  { deep: true } // Important pour détecter les changements dans les objets imbriqués
-);
+// Import decoration data for suggested products
+const decorationItems = ref([
+  {
+      id: "deco1",
+      title: "Assiettes",
+      description: "Le soleil du Maroc avec de nouvelles assiettes à la boutique et les créations",
+      category: "intérieur",
+      image: "/src/assets/decoint1.jpg",
+      price: 49.99
+    },
+    {
+      id: "decoext1",
+      title: "Set de tables",
+      description:
+        "Nos jolies sirènes, table à café, set de table coquillage, et petits tabourets ",
+      category: "extérieur",
+      image: "/src/assets/decoext1.jpg",
+      price: 99.99
+    },
+    // {
+    //   id: "deco2",
+    //   title: "Vase Moderne",
+    //   description: "Un vase design pour sublimer votre salon.",
+    //   category: "intérieur",
+    //   image: "/src/assets/decoint2.jpg",
+    //   price: 79.99
+    // },
+    // {
+    //   id: "deco3",
+    //   title: "Cadre Photo Vintage",
+    //   description: "Un cadre photo au style rétro pour vos souvenirs précieux.",
+    //   category: "intérieur",
+    //   image: "/src/assets/decoint3.jpg",
+    //   price: 59.99
+    // },
+    {
+      id: "decoext2",
+      title: "Lanterne de Jardin",
+      description: "Illuminez vos soirées en extérieur avec cette lanterne élégante.",
+      category: "extérieur",
+      image: "/src/assets/decoext2.jpg",
+      price: 89.99
+    },
+    {
+      id: "decoext3",
+      title: "Pot de Fleurs Design",
+      description: "Un pot de fleurs contemporain pour sublimer votre terrasse.",
+      category: "extérieur",
+      image: "/src/assets/decoext3.jpg",
+      price: 69.99
+    }
+]);
 
 export function useCart() {
+  const cartStore = useCartStore();
+
   // Ajouter un article au panier
   const addItem = (item) => {
-    console.log('Tentative d\'ajout au panier:', item);
-
-    const existingItemIndex = cartItems.value.findIndex(
-      cartItem => cartItem.id === item.id
-    );
-
-    if (existingItemIndex >= 0) {
-      // L'article existe déjà dans le panier, mettre à jour la quantité
-      console.log('Article existant, mise à jour de la quantité');
-      cartItems.value[existingItemIndex].quantity += item.quantity;
-    } else {
-      // Ajouter un nouvel article
-      console.log('Nouvel article ajouté au panier');
-      cartItems.value.push({ ...item });
-    }
-
-    // La sauvegarde dans localStorage se fait automatiquement grâce au watcher
+    cartStore.addItem(item);
   };
 
   // Supprimer un article du panier
   const removeItem = (itemId) => {
-    const index = cartItems.value.findIndex(item => item.id === itemId);
+    const index = cartStore.items.findIndex(item => item.id === itemId);
     if (index !== -1) {
-      cartItems.value.splice(index, 1);
+      cartStore.removeItem(index);
     }
   };
 
   // Mettre à jour la quantité d'un article
   const updateItemQuantity = (itemId, quantity) => {
-    const item = cartItems.value.find(item => item.id === itemId);
-    if (item) {
-      item.quantity = quantity;
+    const index = cartStore.items.findIndex(item => item.id === itemId);
+    if (index !== -1) {
+      cartStore.updateQuantity(index, quantity);
     }
   };
 
   // Vider le panier
   const clearCart = () => {
-    cartItems.value = [];
+    cartStore.items = [];
+    cartStore.saveCart();
   };
 
-  // Calculer le nombre total d'articles
-  const totalItems = computed(() => {
-    return cartItems.value.reduce((total, item) => total + (item.quantity || 1), 0);
-  });
-
-  // Calculer le prix total
-  const totalPrice = computed(() => {
-    return cartItems.value.reduce((total, item) => {
-      return total + (item.price || 99.99) * (item.quantity || 1);
-    }, 0);
-  });
-
-  // Produits suggérés pour la section "Vous pourriez aimer"
+  // Suggested products
   const suggestedProducts = computed(() => {
-    // Prendre jusqu'à 4 produits de décoration pour les suggestions
-    return decorationItems.slice(0, 4);
+    return decorationItems.value;
   });
 
   return {
-    cartItems,
+    get cartItems() {
+      return cartStore.items;
+    },
     addItem,
     removeItem,
     updateItemQuantity,
     clearCart,
-    totalItems,
-    totalPrice,
+    get totalItems() {
+      return cartStore.itemCount;
+    },
+    get totalPrice() {
+      return cartStore.totalPrice;
+    },
     suggestedProducts
   };
 } 

@@ -12,8 +12,12 @@ export const useCartStore = defineStore('cart', {
     
     totalPrice: (state) => {
       return state.items.reduce((total, item) => {
-        // Convertir le prix de '99€' en nombre
-        const price = parseInt(item.price.replace('€', ''));
+        // Handle different price formats: number, string with €, or string without €
+        let price = item.price;
+        if (typeof price === 'string') {
+          // Remove the € symbol and any non-numeric characters except decimal point
+          price = parseFloat(price.replace(/[^\d.-]/g, ''));
+        }
         return total + (price * item.quantity);
       }, 0);
     }
@@ -24,15 +28,14 @@ export const useCartStore = defineStore('cart', {
       const existingItem = this.items.find(item => item.id === product.id);
       
       if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity += product.quantity || 1;
       } else {
         this.items.push({
           ...product,
-          quantity: 1
+          quantity: product.quantity || 1
         });
       }
       
-      // Vous pourriez également sauvegarder le panier dans localStorage ici
       this.saveCart();
     },
     
@@ -54,8 +57,20 @@ export const useCartStore = defineStore('cart', {
     loadCart() {
       const savedCart = localStorage.getItem('cart');
       if (savedCart) {
-        this.items = JSON.parse(savedCart);
+        try {
+          this.items = JSON.parse(savedCart);
+          console.log('Cart loaded from localStorage:', this.items);
+        } catch (error) {
+          console.error('Error parsing cart from localStorage:', error);
+          this.items = [];
+          localStorage.removeItem('cart');
+        }
       }
+    },
+    
+    clearCart() {
+      this.items = [];
+      this.saveCart();
     }
   }
 }); 

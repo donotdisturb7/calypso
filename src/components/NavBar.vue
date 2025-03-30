@@ -70,15 +70,16 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import { useCartStore } from "@/stores/cartStore";
+
 const isOpen = ref(false);
 
-// Simulons un état de panier avec un nombre d'articles
-// Vous devrez remplacer ceci par votre propre logique de panier
-const cartItemCount = ref(0);
+// Use the cart store to get the real cart item count
+const cartStore = useCartStore();
+const cartItemCount = computed(() => cartStore.itemCount);
 
-// Vous pourriez implémenter un store (Pinia ou Vuex) pour gérer le panier
-// et récupérer le nombre d'articles comme ceci:
-// const cartItemCount = computed(() => useCartStore().itemCount);
+// Load the cart when the component is mounted
+cartStore.loadCart();
 </script>
 
 <style>
