@@ -7,18 +7,18 @@
       <img 
         src="@/assets/hero.png" 
         alt="Beach lifestyle" 
-        class="w-full max-w-[300px] sm:max-w-[500px] md:max-w-none md:w-[700px] aspect-square md:h-[700px] rounded-full md:rounded-[350px] object-cover"
+        class="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px] aspect-square rounded-full object-cover"
       />
     </div>
     
     <!-- Flèche de défilement -->
-    <div class="flex justify-center mt-16 md:mt-24">
+    <div class="flex justify-center md:mt-24">
       <button 
         @click="scrollDown" 
         class="scroll-indicator-container"
         aria-label="Défiler vers le bas"
       >
-        <div class="scroll-text">Scroll</div>
+        <!-- <div class="scroll-text">Scroll</div> -->
         <div class="scroll-indicator">
           <div class="chevron"></div>
           <div class="chevron"></div>

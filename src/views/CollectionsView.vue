@@ -1,6 +1,6 @@
 <template>
-  <div class="py-12">
-    <h1 class="text-4xl mb-8">NOS COLLECTIONS.</h1>
+  <div class="py-10">
+    <h1 class="text-4xl">NOS COLLECTIONS.</h1>
     <CollectionList :isFullPage="true"/>
   </div>
 </template>

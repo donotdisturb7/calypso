@@ -20,10 +20,12 @@
       <DecorationItem
         v-for="item in filteredItems"
         :key="item.id"
+        :id="item.id"
         :image="item.image"
         :title="item.title"
         :description="item.description"
         :category="item.category"
+        :price="item.price"
       />
     </div>
   </div>
