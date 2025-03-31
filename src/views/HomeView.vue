@@ -1,5 +1,6 @@
 <template>
   <Hero />
+  <AboutSection />
   <CollectionsView />
   <!-- <CollectionList /> -->
   <!-- <DecorationGrid /> -->

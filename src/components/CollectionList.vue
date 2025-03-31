@@ -15,7 +15,7 @@
             :key="year"
             @click="selectedYear = year"
             :class="[
-              'px-4 py-2 text-lg font-light rounded-full transition-all duration-300',
+              'px-4 py-2 text-lg font-light rounded-full transition-all duration-300 relative',
               selectedYear === year 
                 ? 'bg-[#FDB0E6] text-black shadow-md' 
                 : 'text-gray-400 hover:bg-gray-100'
@@ -38,7 +38,7 @@
               :key="index"
               @click="selectedMonth = index"
               :class="[
-                'px-4 py-2 text-lg whitespace-nowrap rounded-full transition-all duration-300',
+                'px-4 py-2 text-lg whitespace-nowrap rounded-full transition-all duration-300 relative',
                 selectedMonth === index 
                   ? 'bg-[#FDB0E6] text-black shadow-md' 
                   : 'text-gray-400 hover:bg-gray-100'
