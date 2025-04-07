@@ -1,5 +1,5 @@
 <template>
-    <div class="group cursor-pointer relative">
+    <div class="group cursor-pointer relative" @click="navigateToCollection">
       <div class="aspect-square overflow-hidden bg-[#FFF0F8] rounded-lg relative">
         <!-- Logo en arrière-plan -->
         <div class="absolute inset-0 flex items-center justify-center p-4 opacity-25">
@@ -23,7 +23,15 @@
   </template>
   
   <script setup>
-  defineProps({
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+
+  const props = defineProps({
+    id: {
+      type: [String, Number],
+      required: true
+    },
     image: {
       type: String,
       required: true
@@ -40,5 +48,24 @@
       type: Boolean,
       default: false
     }
-  })
+  });
+
+  const navigateToCollection = () => {
+    if (!props.soldOut) {
+      router.push({
+        name: 'CollectionDetail',
+        params: { id: props.id }
+      });
+    }
+  };
   </script>
+
+  <style scoped>
+  .group {
+    transition: transform 0.3s ease;
+  }
+
+  .group:hover:not(:has(.soldOut)) {
+    transform: translateY(-5px);
+  }
+  </style>

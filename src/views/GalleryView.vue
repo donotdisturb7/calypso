@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="gallery-view-container min-h-screen relative bg-[#FFF9F9]">
     <!-- Cercles décoratifs flottants -->
     <div class="absolute top-1/4 left-[10%] w-20 h-20 rounded-full bg-pink-100 opacity-60 animate-float-slow"></div>
@@ -27,6 +28,11 @@
         <div class="absolute bottom-[40px] left-[90%] w-3 h-3 rounded-full bg-pink-300 animate-pulse-slow"></div>
       </div>
     </div>
+=======
+  <div class="py-12">
+    <h1 class="text-4xl mb-8">GALERIE.</h1>
+    <Gallery :isFullPage="true" />
+>>>>>>> ea8ad47f48d5ff209f9961c39b0ced9796ffc9b6
   </div>
 </template>
 

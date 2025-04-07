@@ -48,7 +48,7 @@ export function useCollections() {
         month: 1
         }, {
         id: 5,
-        image: 'src/assets/Collections/2025/FEV2025.1.png',
+        image: '/src/assets/Collections/2025/FEV2025.1.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -56,7 +56,7 @@ export function useCollections() {
         month: 1
         }, {
         id: 6,
-        image: 'src/assets/Collections/2025/FEV2025.3.png',
+        image: '/src/assets/Collections/2025/FEV2025.3.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -64,7 +64,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 7,
-        image: 'src/assets/Collections/2025/FEV2025.4.png',
+        image: '/src/assets/Collections/2025/FEV2025.4.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -72,7 +72,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 8,
-        image: 'src/assets/Collections/2025/FEV2025.5.png',
+        image: '/src/assets/Collections/2025/FEV2025.5.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -80,7 +80,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 9,
-        image: 'src/assets/Collections/2025/FEV2025.6.png',
+        image: '/src/assets/Collections/2025/FEV2025.6.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -88,7 +88,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 10,
-        image: 'src/assets/Collections/2025/FEV2025.7.png',
+        image: '/src/assets/Collections/2025/FEV2025.7.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -96,7 +96,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 11,
-        image: 'src/assets/Collections/2025/FEV2025.8.png',
+        image: '/src/assets/Collections/2025/FEV2025.8.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -104,7 +104,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 12,
-        image: 'src/assets/Collections/2025/FEEV2025.9.png',
+        image: '/src/assets/Collections/2025/FEV2025.9.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -112,7 +112,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 13,
-        image: 'src/assets/Collections/2025/FEV2025.10.png',
+        image: '/src/assets/Collections/2025/FEV2025.10.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,
@@ -158,6 +158,7 @@ export function useCollections() {
         years,
         months,
         filteredCollections,
-        setYear
+        setYear,
+        collections
     }
 }

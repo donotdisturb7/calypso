@@ -4,6 +4,7 @@ import {
 } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ProductDetail from '../components/ProductDetail.vue'
+import CollectionDetail from '../components/CollectionDetail.vue'
 
 const router = createRouter({
     history: createWebHistory(
@@ -35,7 +36,18 @@ const router = createRouter({
         path: '/product/:id',
         name: 'ProductDetail',
         component: ProductDetail
+    }, {
+        path: '/collection/:id',
+        name: 'CollectionDetail',
+        component: CollectionDetail
     }],
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return { top: 0 };
+        }
+    }
 })
 
 router.beforeEach((to, from, next) => {
