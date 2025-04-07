@@ -1,12 +1,7 @@
 <template>
-  <section class="py-16 px-4 sm:px-8 w-full">
-    <!-- Titre de la section -->
-    <!-- <h2 v-if="!isFullPage" class="text-3xl font-medium mb-12 tracking-wider">
-      NOS COLLECTIONS
-    </h2> -->
-
+  <section class="w-full">
     <!-- Filtre par année -->
-    <div class="mb-10">
+    <div class="mb-8">
       <div class="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 items-start sm:items-center">
         <span class="text-xl font-light text-gray-500">Année:</span>
         <div class="flex flex-wrap gap-2 sm:gap-4">
@@ -28,7 +23,7 @@
     </div>
 
     <!-- Filtre par mois avec une barre de défilement élégante -->
-    <div class="mb-10">
+    <div class="mb-8">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-2">
         <span class="text-xl font-light text-gray-500 ">Mois:</span>
         <div class="relative w-full flex-1">
@@ -53,10 +48,11 @@
     
     <!-- Affichage des résultats -->
     <div v-if="filteredCollections.length > 0" 
-         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-10 mt-12">
+         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-10">
       <CollectionItem 
         v-for="item in filteredCollections" 
         :key="item.id"
+        :id="item.id"
         :image="item.image"
         :title="item.title"
         :price="item.price"

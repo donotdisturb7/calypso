@@ -1,7 +1,6 @@
 <template>
-  <div class="decoration-container my-20 flex flex-col min-h-[800px] px-4 md:px-8 lg:px-16">
-    <h2 class="text-2xl mb-12">DÉCORATION.</h2>
-    
+  <div class="py-12">
+    <h1 class="text-4xl mb-8">DÉCORATION.</h1>
     <DecorationGrid />
   </div>
 </template>

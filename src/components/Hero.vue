@@ -1,7 +1,7 @@
 <template>
   <div class="home-container min-h-[190vh] relative">
     <!-- Section 1: Hero principal avec animation -->
-    <section class="flex flex-col justify-center relative overflow-hidden">
+    <section class="flex flex-col justify-center relative overflow-hidden min-h-screen">
       <div class="container mx-auto px-4 relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-center mt-8 md:mt-12 gap-8 md:gap-0">
           <h1 class="text-6xl sm:text-8xl md:text-[160px] text-[#231f21] font-normal font-inter leading-normal md:leading-[120px] whitespace-nowrap md:mr-20 text-center md:text-left animate-fade-in-left">
@@ -40,12 +40,17 @@
     </section>
 
     <!-- Section 2: Produits vedettes -->
-    <section id="featured" class="min-h-screen py-20 relative">
+    <section id="featured" class="min-h-screen py-20 relative opacity-0 transition-opacity duration-700 ease-in-out">
       <div class="container mx-auto px-4">
         <h2 class="text-5xl md:text-7xl text-[#231f21] font-normal font-inter mb-16 fade-in-scroll">Nos coups de cœur.</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 fade-in-scroll">
-          <div class="featured-item group" v-for="product in featuredProducts" :key="product.id">
+          <div 
+            class="featured-item group cursor-pointer" 
+            v-for="product in featuredProducts" 
+            :key="product.id"
+            @click="navigateToCollection(product.id)"
+          >
             <div class="aspect-square overflow-hidden bg-[#FFF0F8] rounded-lg relative">
               <!-- Logo en arrière-plan -->
               <div class="absolute inset-0 flex items-center justify-center p-4 opacity-25">
@@ -58,10 +63,13 @@
                 class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 relative z-10"
               />
             </div>
-            <div class="mt-5 transform transition-transform group-hover:translate-y-[-8px]">
-              <p class="text-xl font-bold uppercase">{{ product.title }}</p>
-              <p class="text-lg text-gray-700">€{{ product.price }} EUR</p>
-              <button class="mt-4 px-6 py-2 bg-[#FDB0E6] text-black rounded-full hover:bg-pink-400 transition-colors">
+            <div class="mt-3">
+              <p class="text-sm font-bold uppercase">{{ product.title }}</p>
+              <p class="text-sm">€{{ product.price }} EUR</p>
+              <button 
+                @click.stop="navigateToCollection(product.id)" 
+                class="mt-4 px-6 py-2 bg-[#FDB0E6] text-black rounded-full hover:bg-pink-400 transition-colors"
+              >
                 Ajouter au panier
               </button>
             </div>
@@ -75,7 +83,7 @@
     </section>
 
     <!-- Section 3: Notre Histoire -->
-    <section class="min-h-screen py-20 bg-[#FFF9F9] relative">
+    <section class="min-h-screen py-20 bg-[#FFF9F9] relative opacity-0 transition-opacity duration-700 ease-in-out">
       <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
         <div class="md:w-1/2 fade-in-scroll">
           <h2 class="text-5xl md:text-7xl text-[#231f21] font-normal font-inter mb-8">Notre histoire.</h2>
@@ -117,7 +125,7 @@
     </section>
 
     <!-- Section 4: Instagram Gallery -->
-    <section class="py-20 bg-[#FFF0F8] relative">
+    <section class="py-20 bg-[#FFF0F8] relative opacity-0 transition-opacity duration-700 ease-in-out">
       <div class="container mx-auto px-4">
         <h2 class="text-5xl md:text-7xl text-[#231f21] font-normal font-inter mb-16 text-center fade-in-scroll">
           Suivez-nous.
@@ -164,9 +172,20 @@
 import { useFeaturedProducts } from '@/composables/useFeaturedProducts';
 import { useGallery } from '@/composables/useGallery';
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useCartStore } from '@/stores/cartStore';
 
+const router = useRouter();
 const { featuredProducts } = useFeaturedProducts();
 const { galleryItems } = useGallery();
+const cartStore = useCartStore();
+
+const navigateToCollection = (id) => {
+  router.push({
+    name: 'CollectionDetail',
+    params: { id: id }
+  });
+};
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
@@ -175,11 +194,18 @@ const scrollToSection = (sectionId) => {
   }
 };
 
+const addToCart = (product) => {
+  cartStore.addItem({
+    ...product,
+    quantity: 1
+  });
+};
+
 onMounted(() => {
   // Observer pour les animations au défilement
   const observerOptions = {
     root: null,
-    rootMargin: '0px',
+    rootMargin: '-50px',
     threshold: 0.1
   };
   
@@ -187,11 +213,12 @@ onMounted(() => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        entry.target.style.opacity = '1';
       }
     });
   }, observerOptions);
   
-  document.querySelectorAll('.fade-in-scroll').forEach(el => {
+  document.querySelectorAll('.fade-in-scroll, section:not(:first-child)').forEach(el => {
     observer.observe(el);
   });
 });
