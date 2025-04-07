@@ -7,7 +7,7 @@
       <!-- Chaque item a une classe CSS unique pour son aspect ratio -->
       <div v-for="(item, index) in galleryItems" 
            :key="index"
-           :class="item.class">
+           :class="['relative group overflow-hidden', item.class]">
         <img 
           :src="item.image" 
           :alt="item.instagram"

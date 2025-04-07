@@ -1,3 +1,5 @@
+import { ref } from 'vue';
+
 export function useGallery(isFullPage = false) {
     const baseGalleryItems = [{
         image: '/src/assets/gallery/1.jpg',

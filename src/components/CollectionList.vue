@@ -1,21 +1,21 @@
 <template>
-  <section class="py-16 px-4 max-w-7xl mx-auto">
+  <section class="py-16 px-4 sm:px-8 w-full">
     <!-- Titre de la section -->
-    <h2 v-if="!isFullPage" class="text-3xl font-medium mb-12 tracking-wider">
+    <!-- <h2 v-if="!isFullPage" class="text-3xl font-medium mb-12 tracking-wider">
       NOS COLLECTIONS
-    </h2>
+    </h2> -->
 
     <!-- Filtre par année -->
     <div class="mb-10">
-      <div class="flex flex-wrap gap-6 items-center">
+      <div class="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 items-start sm:items-center">
         <span class="text-xl font-light text-gray-500">Année:</span>
-        <div class="flex gap-4">
+        <div class="flex flex-wrap gap-2 sm:gap-4">
           <button 
             v-for="year in years" 
             :key="year"
-            @click="selectedYear = year"
+            @click="setYear(year)"
             :class="[
-              'px-4 py-2 text-lg font-light rounded-full transition-all duration-300',
+              'px-3 sm:px-4 py-1 sm:py-2 text-base sm:text-lg font-light rounded-full transition-all duration-300',
               selectedYear === year 
                 ? 'bg-[#FDB0E6] text-black shadow-md' 
                 : 'text-gray-400 hover:bg-gray-100'
@@ -29,16 +29,16 @@
 
     <!-- Filtre par mois avec une barre de défilement élégante -->
     <div class="mb-10">
-      <div class="flex items-center gap-4 mb-2">
-        <span class="text-xl font-light text-gray-500">Mois:</span>
-        <div class="relative flex-1">
-          <div class="flex gap-4 overflow-x-auto scrollbar-thin pb-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-2">
+        <span class="text-xl font-light text-gray-500 ">Mois:</span>
+        <div class="relative w-full flex-1">
+          <div class="flex gap-2 sm:gap-4 overflow-x-auto scrollbar-thin pb-4">
             <button 
               v-for="(month, index) in months" 
               :key="index"
               @click="selectedMonth = index"
               :class="[
-                'px-4 py-2 text-lg whitespace-nowrap rounded-full transition-all duration-300',
+                'px-3 sm:px-4 py-1 sm:py-2 text-base sm:text-lg whitespace-nowrap rounded-full transition-all duration-300',
                 selectedMonth === index 
                   ? 'bg-[#FDB0E6] text-black shadow-md' 
                   : 'text-gray-400 hover:bg-gray-100'
@@ -53,7 +53,7 @@
     
     <!-- Affichage des résultats -->
     <div v-if="filteredCollections.length > 0" 
-         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
+         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-10 mt-12">
       <CollectionItem 
         v-for="item in filteredCollections" 
         :key="item.id"
@@ -85,7 +85,7 @@ defineProps({
   }
 })
 
-const { selectedYear, selectedMonth, years, months, filteredCollections } = useCollections()
+const { selectedYear, selectedMonth, years, months, filteredCollections, setYear } = useCollections()
 </script>
 
 <style scoped>

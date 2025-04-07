@@ -1,9 +1,9 @@
 <template>
   <Hero />
-  <CollectionsView />
+  <!-- <CollectionsView /> -->
   <!-- <CollectionList /> -->
   <!-- <DecorationGrid /> -->
-  <GalleryView />
+  <!-- <GalleryView /> -->
 </template>
 
 <script setup>
