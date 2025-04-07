@@ -235,6 +235,7 @@ const updateQuantity = (itemId, newQuantity) => {
 const clearCart = () => {
   cartStore.items = [];
   cartStore.saveCart();
+  window.location.reload();
 };
 
 onMounted(() => {

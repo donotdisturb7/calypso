@@ -104,7 +104,7 @@ export function useCollections() {
         month: 1
     }, {
         id: 12,
-        image: '/src/assets/Collections/2025/FEV2025.9.png',
+        image: '/src/assets/Collections/2025/FEEV2025.9.png',
         title: 'Maillots de bain',
         price: 24,
         soldOut: false,

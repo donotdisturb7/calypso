@@ -116,12 +116,12 @@
       </div>
 
       <!-- Éléments décoratifs pour cette section -->
-      <div
-        class="absolute top-32 left-0 w-1/3 h-32 bg-gradient-to-r from-pink-100 to-transparent opacity-50"
+      <!-- <div
+        class="absolute top-32 left-0 w-1/3 h-32 mt-16 bg-gradient-to-r from-pink-100 to-transparent opacity-50"
       ></div>
       <div
         class="absolute bottom-20 right-0 w-1/3 h-32 bg-gradient-to-l from-pink-100 to-transparent opacity-50"
-      ></div>
+      ></div> -->
     </section>
 
     <!-- Section 3: Notre Histoire -->
@@ -129,7 +129,7 @@
       class="py-20 bg-[#FFF9F9] relative opacity-0 transition-opacity duration-700 ease-in-out"
     >
       <div
-        class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16"
+        class="container mx-auto px-4 flex mb-34 flex-col md:flex-row items-center gap-16"
       >
         <div class="md:w-1/2 fade-in-scroll">
           <h2
@@ -141,7 +141,7 @@
             Née d'une passion pour l'élégance et la simplicité, Calypso crée des
             pièces qui célèbrent la beauté du quotidien.
           </p>
-          <p class="text-xl md:text-2xl text-gray-700 mb-16 leading-relaxed">
+          <p class="text-xl md:text-2xl text-gray-700 mb-6 leading-relaxed">
             Chaque collection raconte une histoire, chaque objet porte une âme.
             Nous sommes fiers de collaborer avec des artisans locaux pour créer
             des produits durables et éthiques.
@@ -151,7 +151,7 @@
           </button> -->
         </div>
 
-        <div class="md:w-1/2 flex mb-24 justify-center fade-in-scroll">
+        <div class="md:w-1/2 flex justify-center fade-in-scroll">
           <div class="relative">
             <div
               class="absolute -inset-4 bg-gradient-to-r from-gray-200 to-pink-200 rounded-xl blur-lg"
