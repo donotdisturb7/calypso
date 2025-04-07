@@ -24,12 +24,30 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import Hero from '@/components/Hero.vue'
 import CollectionList from '@/components/CollectionList.vue'
 import Gallery from '@/components/Gallery.vue'
 import CollectionsView from './CollectionsView.vue'
 import GalleryView from './GalleryView.vue'
 // import DecorationGrid from '@/components/DecorationGrid.vue'
+
+const router = useRouter()
+
+onMounted(() => {
+  // Vérifier si la page a été rechargée
+  if (performance.navigation && performance.navigation.type === 1) {
+    // Type 1 signifie rechargement de page
+    router.push('/')
+  } else if (window.performance) {
+    // Pour les navigateurs modernes
+    const navEntries = performance.getEntriesByType('navigation')
+    if (navEntries.length > 0 && navEntries[0].type === 'reload') {
+      router.push('/')
+    }
+  }
+})
 </script>
 
 <style scoped>

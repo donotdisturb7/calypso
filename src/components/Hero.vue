@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container min-h-[190vh] relative">
+  <div class="mt-22 home-container min-h-[190vh] relative">
     <!-- Section 1: Hero principal avec animation -->
     <section class="flex flex-col justify-center relative overflow-hidden">
       <div class="container mx-auto px-4 relative z-10">
@@ -69,7 +69,7 @@
     >
       <div class="container mx-auto px-4">
         <h2
-          class="text-5xl md:text-7xl text-[#231f21] font-normal font-inter mb-16 fade-in-scroll"
+          class="text-5xl md:text-7xl mt-20 text-[#231f21] font-normal font-inter mb-16 fade-in-scroll"
         >
           Nos coups de cœur.
         </h2>

@@ -1,6 +1,6 @@
 <template>
   <div class="collection-detail">
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mt-22 mx-auto px-4 py-8">
       <!-- Affichage du chargement -->
       <div v-if="loading" class="text-center py-12">
         <p class="text-xl">Chargement de la collection...</p>

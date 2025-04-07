@@ -1,5 +1,5 @@
 <template>
-  <div class="collections-view-container min-h-screen relative bg-[#FFF9F9]">
+  <div class="collections-view-container mt-22 min-h-screen relative bg-[#FFF9F9]">
     <!-- Cercles décoratifs flottants -->
     <div class="absolute top-1/4 left-[10%] w-20 h-20 rounded-full bg-pink-100 opacity-60 animate-float-slow"></div>
     <div class="absolute bottom-1/4 right-[15%] w-32 h-32 rounded-full bg-pink-200 opacity-50 animate-float-medium"></div>

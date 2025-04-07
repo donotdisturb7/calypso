@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="container mx-auto px-4  py-3 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center relative z-50"
+    class="container container2 mx-auto px-4  py-3 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center relative z-50"
   >
   <!-- md:px-24 -->
     <!-- Logo -->
@@ -83,5 +83,13 @@ cartStore.loadCart();
 </script>
 
 <style>
+.container2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #f9f9f95e ;
+}
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
 </style>
