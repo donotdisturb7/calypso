@@ -83,13 +83,14 @@ cartStore.loadCart();
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+
 .container2 {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #f9f9f95e ;
+  background-color: #f9f9f95e;
 }
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
 </style>
